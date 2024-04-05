@@ -1,11 +1,11 @@
 {
   "name": "portifolio-v3-nodejs",
   "version": "1.0.0",
-  "description": "Meu portifoli em nodeJS",
+  "description": "Meu portifolo em nodeJS",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx nodemon index.js"
+    "start": "node index.js"
   },
   "author": "Matheus Mosken Diegues",
   "license": "MIT",
