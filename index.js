@@ -1,7 +1,10 @@
 // Importando o Express (CommonJS Modules)
-const express = require("express")
+// const express = require("express")
+// Importando o Express (ECMAScript Modules)
+import express from 'express'
 // criando uma sessão
-const session = require('express-session')
+// const session = require('express-session')
+import session from 'express-session'
 
 // Iniciando o express na variável app
 const app = express()
@@ -24,6 +27,8 @@ app.get('/session', (req, res) => {
     // Enviar uma resposta
     res.send(`Você visitou esta página ${sess.views} vezes.`);
   });
+
+
 
 // Definindo o EJS para renderizar páginas HTML
 app.set('view engine', 'ejs')
@@ -53,6 +58,22 @@ app.get("/about", (req, res) => {
 app.get("/projects", (req, res) => {
     res.render('projects')
 })
+// app.get("/error", (req, res) => {
+   
+//    res.render('erro')
+//  });
+// definindo a rota de erros
+app.get("/error", (req, res) => {
+     const erros = [
+        {codigo: 404, descricao: 'Página não encontrada'},
+        {codigo: 500, descricao: 'Erro interno do servidor'},
+        {codigo: 403, descricao: 'Acesso negado'},
+        {codigo: 200, descricao: 'Requisição bem sucedida'},
+        {codigo: 400, descricao: 'Requisição inválida'}
+
+    ]
+    res.render('erro', {erros})
+  });
 // Iniciando o servidor
 app.listen(8080, function(erro){
     if (erro) {
