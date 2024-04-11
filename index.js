@@ -64,15 +64,15 @@ app.get("/projects", (req, res) => {
 //  });
 // definindo a rota de erros
 app.get("/error", (req, res) => {
-     const erros = [
-        {codigo: 404, descricao: 'Página não encontrada'},
-        {codigo: 500, descricao: 'Erro interno do servidor'},
-        {codigo: 403, descricao: 'Acesso negado'},
-        {codigo: 200, descricao: 'Requisição bem sucedida'},
-        {codigo: 400, descricao: 'Requisição inválida'}
-
-    ]
-    res.render('erro', {erros})
+    const erros = [
+      { codigo: 404, descricao: 'Página não encontrada' },
+      { codigo: 500, descricao: 'Erro interno do servidor' },
+      { codigo: 403, descricao: 'Acesso negado' },
+      { codigo: 200, descricao: 'Requisição bem sucedida' },
+      { codigo: 400, descricao: 'Requisição inválida' }
+    ];
+  
+    res.render('erro', { erros });
   });
 // Iniciando o servidor
 app.listen(8080, function(erro){

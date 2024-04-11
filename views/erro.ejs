@@ -1,11 +1,21 @@
 <%- include('partials/header') %>
-<main class="apresentacao">
-    <section class="apresentacao__conteudo">
-        <h1 class="apresentacao__conteudo__titulo">Erro <%= erros.codigo %></h1>
-        <p><%= erros.descricao %></p>
-        </div>
-    </section>
-    </section>
-    <img class="apresentacao__imagem" src="https://avatars.githubusercontent.com/u/69434680" alt="Foto de Matheus M Diegues programador">
-</main>
-<%- include('partials/footer') %>
+    <main class="apresentacao">
+        <section class="apresentacao__conteudo">
+            <h1 class="apresentacao__conteudo__titulo">Erros
+                <% if (erros.length> 1) { %>
+                    encontrados
+            </h1>
+            <ul>
+                <% for (const erro of erros) { %>
+                    <li>Código: <%= erro.codigo %>, Descrição: <%= erro.descricao %>
+                    </li>
+                    <% } %>
+            </ul>
+
+            </div>
+        </section>
+        </section>
+        <img class="apresentacao__imagem" src="https://avatars.githubusercontent.com/u/69434680"
+            alt="Foto de Matheus M Diegues programador">
+    </main>
+    <%- include('partials/footer') %>
