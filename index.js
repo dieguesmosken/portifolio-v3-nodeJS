@@ -58,11 +58,10 @@ app.get("/about", (req, res) => {
 app.get("/projects", (req, res) => {
     res.render('projects')
 })
-// app.get("/error", (req, res) => {
-   
-//    res.render('erro')
-//  });
-// definindo a rota de erros
+app.get("/erro", (req, res) => {
+   res.render('erro')
+ });
+// Rota de erro
 app.get("/error", (req, res) => {
     const erros = [
       { codigo: 404, descricao: 'Página não encontrada' },
@@ -72,8 +71,41 @@ app.get("/error", (req, res) => {
       { codigo: 400, descricao: 'Requisição inválida' }
     ];
   
-    res.render('erro', { erros });
+    res.render('erro', { erros: erros });
   });
+// Rota de erro com parâmetro
+app.get("/error/:codigo", (req, res) => {
+    const codigo = req.params.codigo;
+    const erros = [
+      { codigo: 404, descricao: 'Página não encontrada' },
+      { codigo: 500, descricao: 'Erro interno do servidor' },
+      { codigo: 403, descricao: 'Acesso negado' },
+      { codigo: 200, descricao: 'Requisição bem sucedida' },
+      { codigo: 400, descricao: 'Requisição inválida' }
+    ];
+
+    const erro = erros.find(e => e.codigo == codigo);
+
+    if (erro) {
+        res.render('erro', { erros: [erro] });
+    } else {
+        res.status(404).send('Erro não encontrado');
+    }
+});
+// Coloque este middleware no final, após todas as suas rotas
+app.use(function(req, res, next){
+    const erros = [
+      { codigo: 404, descricao: 'Página não encontrada' },
+      { codigo: 500, descricao: 'Erro interno do servidor' },
+      { codigo: 403, descricao: 'Acesso negado' },
+      { codigo: 200, descricao: 'Requisição bem sucedida' },
+      { codigo: 400, descricao: 'Requisição inválida' }
+    ];
+
+    const erro = erros.find(e => e.codigo == 404);
+
+    res.status(404).render('erro', { erros: [erro] });
+});
 // Iniciando o servidor
 app.listen(8080, function(erro){
     if (erro) {
