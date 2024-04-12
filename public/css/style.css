@@ -1,11 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Krona+One&family=Montserrat:wght@400;600&display=swap');
 
 :root {
-    --cor-primaria: #000000;
+    --cor-primaria: #022E40;
+    --cor-secundaria: #0578A6;
+    --cor-terciaria: #F2E30C;
+    --cor-hover: #595302;
+    /* --cor-primaria: #000000;
     --cor-secundaria: #F6F6F6;
     --cor-terciaria: #ff4800;
-    /*--cor-terciaria: #6131ff;*/
-    --cor-hover: #3e1200;
+  
+    --cor-hover: #3e1200; */
 
     --fonte-primaria: 'Krona One', sans-serif;
     --fonte-secundaria: 'Montserrat', sans-serif;
@@ -14,6 +18,7 @@
     margin: 0;
     padding: 0;
 }
+
 
 body{
     box-sizing: border-box;
@@ -98,10 +103,21 @@ body{
     color: var(--cor-terciaria) ;
 }
 
-.apresentacao__imagem{
+.apresentacao__group{
     width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--cor-terciaria);
     border-radius: 25px;
+    padding: 0px;
 }
+.apresentacao__group .apresentacao__imagem{
+    width: 40em;
+    border-radius: 25px;
+    padding: 0px !important;
+}
+
 .rodape{
     color: var(--cor-primaria);
     background-color: var(--cor-terciaria);
